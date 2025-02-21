@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 
+
 const slides = [
   { src: '/1.jpg', alt: 'Ad 1' },
   { src: '/2.jpg', alt: 'Ad 2' },
