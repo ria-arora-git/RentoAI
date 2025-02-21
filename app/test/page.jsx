@@ -1,6 +1,6 @@
 'use client'
 import { ChatWithRent, TestDB } from '@/server/openai/action'
-import { Button } from '@heroui/react'
+// import { Button } from '@heroui/react'
 import React, {useState} from 'react'
 import Header from '../components/Header'
 
@@ -16,7 +16,7 @@ function page() {
     <div>
         <Header/>
       <input className="text-black" type="text" onChange={(e)=>setprompt(e.target.value)} value={prompt}/>
-      <Button onPress={call}>Call</Button>
+      <button onPress={call}>Call</button>
     </div>
   )
 }
