@@ -10,11 +10,11 @@ function chatbot() {
       </div>
       </div>
       <div className="bg-purple-50 w-3/5 h-4/5">
-      <div className=" flex justify-center justify-items-end">
-        <div className="bg-red-100 h-80">
+      <div className="section-2 block gap-4">
+        <div className="w-full p-8 h-5/6 bg-blue-50 rounded-lg ">
 
         </div>
-        <div className="w-4/5 p-8 h-10 bg-blue-200 rounded-lg ">
+        <div className="flex justify-center w-4/5 p-8 h-10 bg-blue-200 rounded-lg mt-6">
 
         </div>
         <div>
