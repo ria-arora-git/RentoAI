@@ -7,8 +7,10 @@ import Header from '../components/Header'
 function page() {
     const [prompt, setprompt] = useState("")
     async function call(){
-        const res = await ChatWithRent(prompt)
+        const res = await TestDB()
         console.log(res)
+        const resp = await ChatWithRent(prompt)
+        console.log(resp)
     }
 
 

@@ -11,11 +11,11 @@ import { QuerySqlTool } from "langchain/tools/sql";
 
 const datasource = new DataSource({
     type: "postgres",
-    host: 'ep-ancient-bush-a1e2cobz-pooler.ap-southeast-1.aws.neon.tech',
+    host: 'ep-bitter-forest-a1hrm6ta-pooler.ap-southeast-1.aws.neon.tech',
     port: 5432,
-    username: "jims_owner",
-    password: "npg_YSAMEvzJG6B4",
-    database: "jims",
+    username: "neondb_owner",
+    password: "npg_S5PeYk3RlciF",
+    database: "neondb",
     ssl: true,
   });
 
