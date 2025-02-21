@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,4 +5,62 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model properties {
+  spid                       String @id @db.VarChar(1000)
+  prop_id                    String @db.VarChar(1000)
+  preference                 String? @db.VarChar(1000)
+  description                String? @db.VarChar(10000)
+  property_type              String? @db.VarChar(10000)
+  city                       String? @db.VarChar(1000)
+  transact_type              String? @db.VarChar(1000)
+  owntype                    String? @db.VarChar(1000)
+  bedroom_num                String? @db.VarChar(1000)
+  price_per_unit_area        String? @db.VarChar(1000)
+  furnish                    String? @db.VarChar(1000)
+  facing                     String? @db.VarChar(1000)
+  age                        String? @db.VarChar(1000)
+  total_floor                String? @db.VarChar(1000)
+  features                   String? @db.VarChar(10000)
+  register_date              String? @db.VarChar(1000)
+  posting_date               String? @db.VarChar(1000)
+  update_date                String? @db.VarChar(1000)
+  class                      String? @db.VarChar(1000)
+  res_com                    String? @db.VarChar(1000)
+  prop_name                  String? @db.VarChar(1000)
+  property_number            String? @db.VarChar(1000)
+  min_price                  String? @db.VarChar(1000)
+  max_price                  String? @db.VarChar(1000)
+  price_sqft                 String? @db.VarChar(1000)
+  proj_id                    String? @db.VarChar(1000)
+  building_id                String? @db.VarChar(1000)
+  verified                   String? @db.VarChar(1000)
+  map_details                String? @db.VarChar(5000)
+  min_area_sqft              String? @db.VarChar(1000)
+  max_area_sqft              String? @db.VarChar(1000)
+  amenities                  String? @db.VarChar(5000)
+  alt_tag                    String? @db.VarChar(5000)
+  product_type               String? @db.VarChar(1000)
+  top_usps                   String? @db.VarChar(5000)
+  expiry_date                String? @db.VarChar(1000)
+  property_type__u           String? @db.VarChar(1000)
+  area                       String? @db.VarChar(1000)
+  secondary_area             String? @db.VarChar(1000)
+  price                      String? @db.VarChar(1000)
+  prop_heading               String? @db.VarChar(5000)
+  value_label                String? @db.VarChar(1000)
+  class_heading              String? @db.VarChar(1000)
+  class_label                String? @db.VarChar(1000)
+  register_date__u           String? @db.VarChar(1000)
+  registered_days            String? @db.VarChar(1000)
+  primary_tags               String? @db.VarChar(5000)
+  secondary_tags             String? @db.VarChar(5000)
+  total_landmark_count       String? @db.VarChar(1000)
+  formatted_landmark_details String? @db.VarChar(5000)
+  society_name               String? @db.VarChar(1000)
+  building_name              String? @db.VarChar(1000)
+  location                   String? @db.VarChar(5000)
+  balcony_num                String? @db.VarChar(1000)
+  floor_num                  String? @db.VarChar(1000)
 }
