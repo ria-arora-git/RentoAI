@@ -46,7 +46,7 @@ function Chatbot() {
 
   return (
     <div className="flex justify-center items-center gap-4 h-screen bg-purple-50">
-      <h1 className="text-black text-4xl font-bold mb-4">Welcome to RentoAI Chatbot</h1> {/* Add your heading here */}
+      
       <div className="bg-purple-50 w-1/5 h-4/5 flex items-center border">
         <Image src={banner2} alt="" className="p-2" />
       </div>
