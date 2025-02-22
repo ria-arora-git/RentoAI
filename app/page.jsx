@@ -21,10 +21,17 @@ function landing() {
       </div>
       </div>
       <div className='p-2 mx-8 flex justify-between text-xl font-semibold text-white gap-14'>
+
       <a href="/advertisement">Latest</a>
       <a href="/chatpage">AiBot</a>
       <a href="/home">Listing</a>
       <a href="/signin">SignUp</a>
+
+      <button/><a href="#Home">Home</a>
+      <a href="#bot">AiBot</a>
+      <a href="#Listings">Listing</a>
+      <a href="#Profile">Profile</a>
+
       </div>
         
     </header>
