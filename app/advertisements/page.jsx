@@ -42,9 +42,9 @@ const HomePage = () => {
           </div>
         </div>
         <div className='p-2 mx-8 flex justify-between text-xl font-semibold text-white gap-16'>
-          {/* <a href="#Home" className='hover:text-purple-300 transition-colors'>Home</a> */}
+          <a href="/preferenceform" className='hover:text-purple-300 transition-colors'>Publish your ad</a>
           <a href="/chatpage" className='hover:text-purple-300 transition-colors'>AiBot</a>
-          <a href="/sellerlisting" className='hover:text-purple-300 transition-colors'>Listing</a>
+    
           <div className="mx-4 gap-6 flex">
             { useUser().isSignedIn ? <UserButton /> : <SignUp />}
           </div>
@@ -106,7 +106,7 @@ const HomePage = () => {
       </div>
 
       <div className="flex justify-center mt-8 pb-6">
-          <a href='/chatpage' className="animate-bounce bg-purple-700 text-white font-bold py-2 px-4 rounded-full text-xl">
+          <a href='/home' className="animate-bounce bg-purple-700 text-white font-bold py-2 px-4 rounded-full text-xl">
             See more options
           </a>
       </div>

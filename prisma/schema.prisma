@@ -7,6 +7,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model users {
+  id          Int      @id @default(autoincrement())
+  email       String   @unique
+  password    String
+
+  created_at  DateTime @default(now())
+  updated_at  DateTime @default(now())
+}
+
 model properties {
   spid                       String @id @db.VarChar(1000)
   prop_id                    String @db.VarChar(1000)
@@ -17,7 +26,7 @@ model properties {
   transact_type              String? @db.VarChar(1000)
   owntype                    String? @db.VarChar(1000)
   bedroom_num                String? @db.VarChar(1000)
-  price_per_unit_area        String? @db.VarChar(1000)
+  price_per_unit_area        Int    @db.Integer
   furnish                    String? @db.VarChar(1000)
   facing                     String? @db.VarChar(1000)
   age                        String? @db.VarChar(1000)
@@ -30,9 +39,9 @@ model properties {
   res_com                    String? @db.VarChar(1000)
   prop_name                  String? @db.VarChar(1000)
   property_number            String? @db.VarChar(1000)
-  min_price                  String? @db.VarChar(1000)
-  max_price                  String? @db.VarChar(1000)
-  price_sqft                 String? @db.VarChar(1000)
+  min_price                  Int    @db.Integer
+  max_price                  Int    @db.Integer
+  price_sqft                 Int    @db.Integer
   proj_id                    String? @db.VarChar(1000)
   building_id                String? @db.VarChar(1000)
   verified                   String? @db.VarChar(1000)
@@ -47,7 +56,7 @@ model properties {
   property_type__u           String? @db.VarChar(1000)
   area                       String? @db.VarChar(1000)
   secondary_area             String? @db.VarChar(1000)
-  price                      String? @db.VarChar(1000)
+  price                      Int    @db.Integer
   prop_heading               String? @db.VarChar(5000)
   value_label                String? @db.VarChar(1000)
   class_heading              String? @db.VarChar(1000)
