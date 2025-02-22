@@ -2,21 +2,22 @@
 import { useState } from 'react';
 
 function UserForm() {
-  const [userType, setUserType] = useState(null);
   const [formData, setFormData] = useState({
-    property: { location: '', size: '', price: '' },
-    buyer: { preferredSize: '', maxBudget: '', preferredLocation: '' }
+    location: '',
+    size: '',
+    price: ''
   });
+  const [selectedPackage, setSelectedPackage] = useState('');
   const [showSuccess, setShowSuccess] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowSuccess(true);
-    console.log({ userType, ...formData });
+    console.log({ ...formData, selectedPackage });
   };
 
-  const updateField = (type, field, value) => {
-    setFormData(prev => ({ ...prev, [type]: { ...prev[type], [field]: value } }));
+  const updateField = (field, value) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
   };
 
   return (
@@ -26,77 +27,39 @@ function UserForm() {
           <h1 className="text-3xl font-bold text-purple-600 pb-10 mt-6">Welcome to RentoAI!</h1>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-purple-200">
-          <h2 className="text-lg font-semibold text-purple-600 mb-4">Your Role: </h2>
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-purple-200 space-y-4">
+          <h2 className="text-lg font-semibold text-purple-600">Property Details</h2>
+          <Input label="Location" value={formData.location} onChange={(v) => updateField('location', v)} />
           <div className="grid gap-4 md:grid-cols-2">
-            {['seller', 'buyer'].map((type) => (
-              <button
-                key={type}
-                type="button"
-                onClick={() => setUserType(type)}
-                className={`p-6 rounded-lg border-2 ${
-                  userType === type ? 'border-purple-500 bg-purple-50' : 'border-purple-200'
-                } transition-colors`}
-              >
-                <span className="block text-xl mb-2">{type === 'seller'}</span>
-                <span className="text-purple-600 text-xl">{type}</span>
+            <Select label="Property Size" options={['1 BHK', '2 BHK', '3 BHK', '4 BHK']}
+              value={formData.size} onChange={(v) => updateField('size', v)} />
+            <Input label="Expected Price" type="number" value={formData.price} onChange={(v) => updateField('price', v)} />
+          </div>
+        </div>
+
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-purple-200 space-y-4">
+          <h2 className="text-lg font-semibold text-purple-600">Select Package</h2>
+          <div className="grid gap-4 md:grid-cols-3">
+            {['Basic', 'Premium', 'Ultimate'].map((pkg) => (
+              <label key={pkg} className={`p-4 rounded-lg border cursor-pointer ${
+                selectedPackage === pkg ? 'bg-purple-50 border-purple-500' : 'border-purple-200'
+              }`}>
+                <input type="radio" name="package" value={pkg} className="hidden"
+                  onChange={() => setSelectedPackage(pkg)} />
+                <span className="block text-xl text-purple-600">{pkg}</span>
                 <p className="text-sm text-purple-400 mt-1">
-                  {type === 'seller' ? 'List your property' : 'Find your dream home'}
+                  {pkg === 'Basic' && 'Basic listing on dashboard'}
+                  {pkg === 'Premium' && 'Premium listing with more visibility'}
+                  {pkg === 'Ultimate' && 'Ultimate listing with top visibility and features'}
                 </p>
-              </button>
+              </label>
             ))}
           </div>
         </div>
 
-        {userType && (
-          <div className="bg-white p-6 rounded-lg border border-purple-200 space-y-4">
-            <h2 className="text-lg font-semibold text-purple-600">
-              {userType === 'seller' ? 'Property Details' : 'Buyer Preferences'}
-            </h2>
-            {userType === 'seller' ? (
-              <>
-                <Input label="Location" value={formData.property.location} 
-                  onChange={(v) => updateField('property', 'location', v)} />
-                <div className="grid gap-4 md:grid-cols-2">
-                  <Select label="Property Size" options={['1 BHK', '2 BHK', '3 BHK', '4 BHK']}
-                    value={formData.property.size} 
-                    onChange={(v) => updateField('property', 'size', v)} />
-                  <Input label="Expected Price" type="number" 
-                    value={formData.property.price} 
-                    onChange={(v) => updateField('property', 'price', v)} />
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="grid grid-cols-2 gap-2">
-                  {['1 BHK', '2 BHK', '3 BHK', '4 BHK'].map(size => (
-                    <label key={size} className={`p-2 rounded-lg border cursor-pointer ${
-                      formData.buyer.preferredSize === size ? 'bg-purple-50 border-purple-500' : 'border-purple-200'
-                    }`}>
-                      <input type="radio" name="size" value={size} className="hidden"
-                        onChange={() => updateField('buyer', 'preferredSize', size)} />
-                      <span className="text-purple-600">{size}</span>
-                    </label>
-                  ))}
-                </div>
-                <div className="grid gap-4 md:grid-cols-2">
-                  <Input label="Maximum Budget" type="number" 
-                    value={formData.buyer.maxBudget} 
-                    onChange={(v) => updateField('buyer', 'maxBudget', v)} />
-                  <Input label="Preferred Location" 
-                    value={formData.buyer.preferredLocation} 
-                    onChange={(v) => updateField('buyer', 'preferredLocation', v)} />
-                </div>
-              </>
-            )}
-          </div>
-        )}
-
-        {userType && (
-          <button type="submit" className="w-full bg-gradient-to-tr from-pink-500 to-purple-500 text-white font-bold text-xl rounded-full p-3 hover:opacity-90 transition-opacity">
-            Submit Details
-          </button>
-        )}
+        <button type="submit" className="w-full bg-gradient-to-tr from-pink-500 to-purple-500 text-white font-bold text-xl rounded-full p-3 hover:opacity-90 transition-opacity">
+          Submit Details
+        </button>
       </form>
 
       {showSuccess && (
@@ -122,9 +85,7 @@ function UserForm() {
                 Success!
               </h3>
               <p className="text-purple-500">
-                {userType === 'seller' 
-                  ? "Property details submitted successfully!" 
-                  : "Buyer preferences submitted successfully!"}
+                Property details and package submitted successfully!
               </p>
               <button
                 onClick={() => setShowSuccess(false)}

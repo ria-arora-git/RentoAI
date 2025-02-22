@@ -79,7 +79,8 @@ export async function ChatWithRent(quest){
   const generateAnswer = async () => {
     const promptValue =
       "Given the following user question, corresponding SQL query, " +
-      "and SQL result, answer the user question. \n\n" +
+      "and SQL result, answer the user question. try to avoid saying there was an error and give some response for every question" +
+      "return the link http://localhost:3000/sellerlisting if user ask for any sort of contact\n\n" +
       `Question: ${quest}\n` +
       `SQL Query: ${sqlquery.query}\n` +
       `SQL Result: ${res.result}\n`;

@@ -15,10 +15,10 @@ function Chatbot() {
     { id: 1, text: "Hello, I'm RentoAI. How can I help you today?", sender: "bot" }
   ])
   const frequentPrompts = [
-    "What is the best location to get a pg in",
-    "what are the average property rates",
-    "Give me some points to bargain",
-    "Best top 5 property location with comparison"
+    "Where can i find the cheapest property?",
+    "I want a 5th floor property.",
+    "Give me some points to bargain.",
+    "Best top 5 property location with comparison."
   ]
 
   async function call(inputPrompt) {
@@ -45,8 +45,14 @@ function Chatbot() {
   }
 
   return (
-    <div className="flex justify-center items-center gap-4 h-screen bg-purple-50">
+    <div className="flex justify-center items-center gap-4 h-screen bg-purple-50 mb-20">
+      <header className='w-full  fixed top-0 left-0 bg-purple-800/80 backdrop-blur-sm z-50 h-16 flex justify-between items-center px-6 border-b border-purple-300/20 '>
+     
+     <h1 className='text-white font-bold text-4xl p-4'>RentoAI</h1>
+     <a href="/sellerlisting" className='text-white'><button className='className='text-white text-2xl>Find The Contacts</button></a>
+     
       
+      </header>
       <div className="bg-purple-50 w-1/5 h-4/5 flex items-center border">
         <Image src={banner2} alt="" className="p-2" />
       </div>
