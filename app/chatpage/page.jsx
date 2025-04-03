@@ -21,6 +21,7 @@ function Chatbot() {
     "Best top 5 property location with comparison."
   ]
 
+  
   async function call(inputPrompt) {
     setMessages((prevMessages) => [...prevMessages, { id: crypto.randomUUID(), text: inputPrompt, sender: "user" }])
     setPrompt("")
@@ -47,7 +48,6 @@ function Chatbot() {
   return (
     <div className="flex justify-center items-center gap-4 h-screen bg-purple-50 mb-20">
       <header className='w-full  fixed top-0 left-0 bg-purple-800/80 backdrop-blur-sm z-50 h-16 flex justify-between items-center px-6 border-b border-purple-300/20 '>
-     
      <h1 className='text-white font-bold text-4xl p-4'>RentoAI</h1>
      <a href="/sellerlisting" className='text-white'><button className='className='text-white text-2xl>Find The Contacts</button></a>
      
